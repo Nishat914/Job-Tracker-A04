@@ -136,6 +136,24 @@ mainContainer.addEventListener('click', function(event){
             filteredSection.classList.remove('hidden');
         }
     }
+    else if(event.target.classList.contains('Rejected-filter-btn')){
+        if(rejectedList.length==0){
+            let div=document.createElement('div');
+        div.className='class="w-[80%] mx-auto"'
+        div.innerHTML=`
+         
+                <div class="flex flex-col justify-center items-center space-y-3 p-[60px] bg-amber-50">
+            <div>
+            <img src="./assignment_7959593 1.png" alt="">
+            </div>
+            <p class="font-bold text-blue-950">No jobs available</p>
+            <p class="text-[14px] text-gray-500">Check back soon for new job opportunities</p>
+        </div>
+            `
+            filteredSection.appendChild(div);
+            filteredSection.classList.remove('hidden');
+        }
+    }
 });
 
 
