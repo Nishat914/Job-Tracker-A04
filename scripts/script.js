@@ -56,11 +56,11 @@ mainContainer.addEventListener('click', function(event){
 
     if(event.target.classList.contains('interviewBtn')){
         const parentNode=event.target.parentNode.parentNode;
-    const jobName=parentNode.querySelector('.jobName').innerText;
-    const position=parentNode.querySelector('.position').innerText;
-    const salary=parentNode.querySelector('.salary').innerText;
-    const status=parentNode.querySelector('.status').innerText;
-    const description=parentNode.querySelector('.description').innerText;
+        const jobName=parentNode.querySelector('.jobName').innerText;
+        const position=parentNode.querySelector('.position').innerText;
+        const salary=parentNode.querySelector('.salary').innerText;
+        const status=parentNode.querySelector('.status').innerText;
+        const description=parentNode.querySelector('.description').innerText;
 
     parentNode.querySelector('.status').innerText="Interview";
     const cardInfo={
@@ -89,11 +89,11 @@ mainContainer.addEventListener('click', function(event){
     }
     else if(event.target.classList.contains('rejectedBtn')){
         const parentNode=event.target.parentNode.parentNode;
-    const jobName=parentNode.querySelector('.jobName').innerText;
-    const position=parentNode.querySelector('.position').innerText;
-    const salary=parentNode.querySelector('.salary').innerText;
-    const status=parentNode.querySelector('.status').innerText;
-    const description=parentNode.querySelector('.description').innerText;
+        const jobName=parentNode.querySelector('.jobName').innerText;
+        const position=parentNode.querySelector('.position').innerText;
+        const salary=parentNode.querySelector('.salary').innerText;
+        const status=parentNode.querySelector('.status').innerText;
+        const description=parentNode.querySelector('.description').innerText;
 
     parentNode.querySelector('.status').innerText="Rejected";
     const cardInfo={
@@ -117,12 +117,25 @@ mainContainer.addEventListener('click', function(event){
 
     calculateCount();
     
-
-    
     }
-
-    
-   
+    else if(event.target.classList.contains('Interview-filter-btn')){
+        if(interviewList.length==0){
+            let div=document.createElement('div');
+        div.className='class="w-[80%] mx-auto"'
+        div.innerHTML=`
+         
+                <div class="flex flex-col justify-center items-center space-y-3 p-[60px] bg-amber-50">
+            <div>
+            <img src="./assignment_7959593 1.png" alt="">
+            </div>
+            <p class="font-bold text-blue-950">No jobs available</p>
+            <p class="text-[14px] text-gray-500">Check back soon for new job opportunities</p>
+        </div>
+            `
+            filteredSection.appendChild(div);
+            filteredSection.classList.remove('hidden');
+        }
+    }
 });
 
 
