@@ -59,7 +59,7 @@ function toggoleStyle(id){
 mainContainer.addEventListener('click', function(event){
 
     if(event.target.classList.contains('interviewBtn')){
-        const parentNode=event.target.parentNode.parentNode;
+        const parentNode = event.target.closest('.card');
         const jobName=parentNode.querySelector('.jobName').innerText;
         const position=parentNode.querySelector('.position').innerText;
         const salary=parentNode.querySelector('.salary').innerText;
@@ -85,14 +85,17 @@ mainContainer.addEventListener('click', function(event){
     if(currentStatus == 'Rejected-filter-btn'){
         renderRejected();
     }
+    if(currentStatus == 'Interview-filter-btn'){
+        renderInterview();
+    }
 
 
     calculateCount();
-    renderInterview();
+    
     
     }
     else if(event.target.classList.contains('rejectedBtn')){
-        const parentNode=event.target.parentNode.parentNode;
+        const parentNode = event.target.closest('.card');
         const jobName=parentNode.querySelector('.jobName').innerText;
         const position=parentNode.querySelector('.position').innerText;
         const salary=parentNode.querySelector('.salary').innerText;
@@ -117,6 +120,10 @@ mainContainer.addEventListener('click', function(event){
     interviewList=interviewList.filter(item => item.jobName != cardInfo.jobName);
     if(currentStatus == 'Interview-filter-btn'){
         renderInterview();
+    }
+
+    if(currentStatus == 'Rejected-filter-btn'){
+        renderRejected();
     }
 
     calculateCount();
@@ -188,7 +195,7 @@ function renderInterview(){
     for(let interview of interviewList){
         
         let div=document.createElement('div');
-        div.className='flex justify-between bg-amber-50 p-5 mb-5'
+        div.className='card flex justify-between bg-amber-50 p-5 mb-5'
         div.innerHTML=`
          
                 <div class="space-y-2">
@@ -199,8 +206,8 @@ function renderInterview(){
                     <p class="description text-[14px] text-gray-500">${interview.description}</p>
 
                     <div class="flex gap-2">
-                        <button class=" border border-green-500 text-green-500 p-1">INTERVIEW</button>
-                        <button class="border border-red-500 text-red-500 p-1">REJECTED</button>
+                        <button class="interviewBtn border border-green-500 text-green-500 p-1">INTERVIEW</button>
+                        <button class="rejectedBtn border border-red-500 text-red-500 p-1">REJECTED</button>
                     </div>
                 </div>
                 <div>
@@ -218,7 +225,7 @@ function renderRejected(){
     for(let reject of rejectedList){
         
         let div=document.createElement('div');
-        div.className='flex justify-between bg-amber-50 p-5 mb-5'
+        div.className='card flex justify-between bg-amber-50 p-5 mb-5'
         div.innerHTML=`
          
                 <div class="space-y-2">
@@ -229,8 +236,8 @@ function renderRejected(){
                     <p class="description text-[14px] text-gray-500">${reject.description}</p>
 
                     <div class="flex gap-2">
-                        <button class=" border border-green-500 text-green-500 p-1">INTERVIEW</button>
-                        <button class="border border-red-500 text-red-500 p-1">REJECTED</button>
+                        <button class="interviewBtn border border-green-500 text-green-500 p-1">INTERVIEW</button>
+                        <button class="rejectedBtn border border-red-500 text-red-500 p-1">REJECTED</button>
                     </div>
                 </div>
                 <div>
